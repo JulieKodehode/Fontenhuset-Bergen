@@ -1,5 +1,6 @@
 
 import { StyleSheet, Text,Image, View, useWindowDimensions, TouchableWithoutFeedbackBase, Button } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { meetingData } from '../Data';
@@ -25,13 +26,14 @@ export function CarouselHomeElement({img, text, CarouselKey, onPress}){
         <View key={CarouselKey} style={styles.homeBox} >
              <View style ={styles.homeImgShadow}>
               <Image style={styles.imageBox} source= {img}/>
-              </View>
-              <View style={styles.husetHeader}>
+             </View>
+
+              <LinearGradient style={styles.husetHeader} colors={['rgba(0,0,0,0.6)', 'transparent']}>
                  <Text style={styles.text}>{text}</Text>
-              </View>
-              <View style={styles.lightBox}  >
+              </LinearGradient >
+              <LinearGradient style={styles.lightBox} colors={['transparent', '(rgba(242,240,240,1)']} >
                 <Text style={styles.lightBoxText}  onPress={onPress} >Se mer</Text>
-              </View> 
+              </LinearGradient> 
         
             
             
@@ -52,10 +54,10 @@ export function CarouselMeetingElement(props){
           <Image style={styles.meetingImageBox} source= {props.img}/>
         </View>
         <View style={styles.infoBox}>
-            <Text style={styles.meetingInfo}>{props.info[0]} </Text>
-            <Text style={styles.meetingInfo}>{props.info[1]} </Text>
-            <Text style={styles.meetingInfo}>{props.info[2]} </Text>
-            <Text style={styles.meetingText}>{props.info[3]} </Text>
+            <Text style={styles.meetingInfo}>{props.dag} </Text>
+            <Text style={styles.meetingInfo}>{props.tid} </Text>
+            <Text style={styles.meetingInfo}>{props.infoHeader} </Text>
+            <Text style={styles.meetingInfo}>{props.infoText} </Text>
         </View>
     </View>
         
@@ -75,7 +77,7 @@ export  const CarouselSectionElement= (props)=>{
               <Image style={styles.meetingImageBox} source= {props.img}/>
             </View>
             <View style={styles.infoBox}>
-                <Text style={styles.meetingText}>{props.info} </Text>
+                <Text style={styles.enhetInfo}>{props.info} </Text>
             </View>
         </View>
     )
@@ -87,19 +89,18 @@ const styles = StyleSheet.create({
 
    
     imageBox: {
-        width: 220,
-        height: 220,
+        width: 170,
+        height: 170,
         borderRadius: 10,
-        marginRight: 15
+        marginRight: 30
    
    
     },
     lightBox:{
-        height: 40,
-        width: 220, 
-        backgroundColor: ['rgba(242,240,240,0.8)', 'transparent'],
+        height: 50,
+        width: 170, 
         position: 'absolute',
-        top: 180,
+        top: 130,
         textAlign:'center',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10
@@ -107,9 +108,9 @@ const styles = StyleSheet.create({
 
     },
     lightBoxText:{
-        fontSize: 18, 
-        marginTop: 5,
-        color: 'black',
+        fontSize: 16, 
+        marginTop: 8,
+        color: 'white',
         fontWeight: '500', 
         textAlign:'center'
     },
@@ -117,18 +118,19 @@ const styles = StyleSheet.create({
    
 
     text: {
-        bottom: 180, 
-        fontSize: 22, 
+        marginTop: 10,
+        fontSize: 18, 
         textAlign: 'center', 
         color: 'rgba(242,240,240, 1)',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginLeft: 5
         
     },
 
     husetHeader: {
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.6), transparent)', 
+        backgroundColor: 'linear-gradient(rgba(0,0,0,0.8), transparent)', 
         position: 'absolute', 
-        width: 220,
+        width: 170,
         height: 40,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10
@@ -146,11 +148,17 @@ const styles = StyleSheet.create({
     },
 
     meetingInfo:{
-        height: 400,
-        width: 400,
-        textAlign: 'center',
-        marginRight: 30
+        width: 200,
+        marginLeft: 80,
+        marginTop: 10
 
+
+    },
+
+    enhetInfo:{
+        width: 200,
+        marginLeft: 65,
+        marginTop: 10
 
     },
 
@@ -161,13 +169,14 @@ const styles = StyleSheet.create({
     meetingBox:{
         display: 'flex',
         flexDirection: 'column',
-        marginRight: 100
+        width: 400,
+        marginLeft: 10
         
     },
 
     meetingImageBox: {
-        width: 220,
-        height: 220,
+        width: 170,
+        height: 170,
         borderRadius: 10,
         zIndex: 1
         
@@ -179,17 +188,17 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         color: '#7E7E7E', 
         textAlign: 'center',
-        marginRight: 35
+        marginRight: 90
     }, 
 
     homeBox:{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
 
     imgShadow:{
-        width: 220,
-        height: 220,
+        width: 180,
+        height: 180,
         borderRadius: 10,
         zIndex: 0,
         shadowColor: 'black',
@@ -200,15 +209,16 @@ const styles = StyleSheet.create({
     },
 
     homeImgShadow:{
-        width: 220,
-        height: 220,
+        width: 170,
+        height: 170,
         borderRadius: 10,
         zIndex: 0,
         shadowColor: 'black',
-        shadowOffset: {width: 4, height: 4},
+        shadowOffset: {width: 5, height: 4},
         shadowOpacity: 0.2,
         shadowRadius: 10, 
-        marginRight: 50,
+        marginRight: 40
+        
 
     },
 
@@ -218,10 +228,10 @@ const styles = StyleSheet.create({
         height: 200,
         width: 350,
         marginRight: 100,
-        marginTop: 50,
-        marginLeft: 15
+        marginTop: 50
     
     
-    }
+    },
+
    
    })

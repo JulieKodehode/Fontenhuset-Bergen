@@ -3,9 +3,13 @@ import { StyleSheet, Text,Image, View, ScrollView} from 'react-native';
 import Home from './components/Home';
 import Meeting from './components/Meeting';
 import Section from './components/Section'
+import Profile from './components/Profile';
+import Kontakt from './components/Kontakt';
+import { Footer } from './components/Footer';
 import { homeData, sectionData, meetingData } from './Data';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useState } from "react";
 
 
 
@@ -26,17 +30,47 @@ export function MapHome() {
 )}
 
 export function MapSection(){
+
+  const [section, setSection] = useState(0)
+
+  const clickHandler= ()=> {
+   
+
+    if(section === sectionData.length-1){
+     return setSection(0)
+    }
+   
+
+    setSection(prevSection => prevSection+1)
+ 
+     
+  }
+
+  const backClick= ()=>{
+   
+    if(section === sectionData.length-3){
+      return setSection(2)
+     }
+
+    setSection(prevSection => prevSection-1)
+
+  }
+
+
       return(
 
       <View>
-       
-        <View key={`View-${sectionData[0].id}`}>
-          <Section key={ `Section-${sectionData[0].id}`} carouselData={sectionData[0].carouselle} headerImg={sectionData[0].img} mainHeader={sectionData[0].title}  />
-          <Section key={ `Section-${sectionData[1].id}`} carouselData={sectionData[1].carouselle} headerImg={sectionData[1].img} mainHeader={sectionData[1].title}  />
-        </View>
         
+        <View key={`View-${sectionData[section].id}`}>
+          <Section backClick={backClick} press={clickHandler}  key={ `Section-${sectionData[section].id}`} carouselData={sectionData[section].carouselle} headerImg={sectionData[section].img} mainHeader={sectionData[section].title}  />
+        </View>
+         
        </View>
-)}
+)
+
+
+
+}
 
 export function MapMeeting(){
 
@@ -68,15 +102,19 @@ export default function App(){
 
 
   return (
-      
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={MapHome} />
-        <Stack.Screen name="Meeting" component={MapMeeting} />
-        <Stack.Screen name="Enheter" component={MapSection} />
-      </Stack.Navigator>
-    </NavigationContainer>
+  
+      <NavigationContainer styles={styles.container}>
+        <Stack.Navigator   initialRouteName="Home">
+          <Stack.Screen name="Home" component={MapHome} />
+          <Stack.Screen name="Meeting" component={MapMeeting} />
+          <Stack.Screen name="Enheter" component={MapSection} />
+          <Stack.Screen name ="Profile" component={Profile}/>
+          <Stack.Screen name ="Kontakt" component={Kontakt}/>
+        </Stack.Navigator>
+        <Footer />
+      </NavigationContainer>
 
+    
 
   );
 }
@@ -89,10 +127,8 @@ export default function App(){
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'white',
+   
   },
 });
 

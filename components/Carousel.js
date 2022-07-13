@@ -1,4 +1,4 @@
-import { StyleSheet, Text,Image, View, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, Text,Image, View, FlatList, ScrollView, InteractionManager } from 'react-native';
 import { CarouselHomeElement, CarouselSectionElement, CarouselMeetingElement } from './CarouselElement';
 import { sectionData, homeData } from '../Data';
 import { useState, useEffect} from 'react';
@@ -20,7 +20,7 @@ export function CarouselHome({carouselData}){
       
       <View key={`ViewThree-${carouselData.id}`} style= {styles.homeContainer}>
               <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[0].image} title={carouselData[0].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[0].text} />
-              <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[1].image} title={carouselData[1].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[1].text} />
+              <CarouselHomeElement onPress={() => navigation.push('Profile')} img={carouselData[1].image} title={carouselData[1].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[1].text} />
               <CarouselHomeElement onPress={() => navigation.push('Meeting')} img={carouselData[2].image} title={carouselData[2].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[2].text} />
               <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[3].image} title={carouselData[3].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[3].text} />
       </View>
@@ -35,19 +35,30 @@ export function CarouselMeeting({carouselData}){
     
 
     return(
+          
+        
+        <View style={styles.container} >
+        <FlatList
+        data={carouselData}
+        keyExtractor={carouselData=> carouselData.id}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        bounces={false}
+        renderItem={({item})=>{
 
-         <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false} bounces={false}>
-            <View style={styles.container}>
+            return(
+                <View key={`ViewTwo-${item.id}`}>
                 
-                {carouselData.map((carousel) => {
-                return(
-                <View  key={`ViewTwo-${carousel.id}`}>
-                    <CarouselMeetingElement   img={carousel.image} title={carousel.header} CarouselKey={`carousel-${carousel.id}`} info={carousel.info}/>
-                </View>  ) 
-            
-                })}      
-            </View>
-        </ScrollView>
+                  <CarouselMeetingElement   img={item.image} title={item.header} CarouselKey={`CarouselMeeting-${item.id}`} dag={item.info[0]} tid={item.info[1]} infoHeader={item.info[2]} infoText={item.info[3]}/>
+                         
+                </View>
+            )
+        }}
+        />
+        </View>
+        
+       
     
 
     )
@@ -64,23 +75,27 @@ export function Carousel({carouselData}){
 
     return(
 
-         <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}>
-        <View style={styles.container}>
+         
+             <View style={styles.container}>
+                <FlatList
+                data={carouselData}
+                keyExtractor={carouselData=> carouselData.id}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                pagingEnabled
+                bounces={false}
+                renderItem={({item})=>{
              
-            {carouselData.map((carousel) => {
             return(
-            <View  key={`ViewTwo-${carousel.id}`}>
-                <CarouselSectionElement img={carousel.image} title={carousel.header} CarouselKey={`carousel-${carousel.id}`} info={carousel.info}/>
-            </View>  ) 
-           
-            })}      
-        </View>
-        </ScrollView>
-    
+            <View  key={`ViewThree-${item.id}`}>
+                <CarouselSectionElement img={item.image} title={item.header} CarouselKey={`carousel-${item.id}`} info={item.info}/>
+            </View>  
+            
+            )}}/>
 
-    )
+           </View>
 
-
+ )
 }
 
 
@@ -91,22 +106,22 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: 80,
-        justifyContent: 'space-evenly', 
+        marginTop: 30,
+        justifyContent: 'space-evenly',
+        width: 400
         
         
     },
 
     ScrollView: {
-        marginHorizontal: 20,
+        marginHorizontal: 10,
         
     }, 
 
     homeContainer:{
         display: 'flex',
         flexDirection: 'row',
-        marginTop: 35,
-        justifyContent: 'space-between'
+        marginTop: 10
 
     }
 
@@ -160,4 +175,22 @@ const styles = StyleSheet.create({
     }, [])
 
     })}
+
+
+    <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false} bounces={false}>
+
+    
+     {carouselData.map((carousel) => {
+                return(
+                <View  key={`ViewTwo-${carousel.id}`}>
+                    <CarouselMeetingElement   img={carousel.image} title={carousel.header} CarouselKey={`carousel-${carousel.id}`} info={carousel.info}/>
+                </View>  ) 
+            
+                })}  
+
+            {carouselData.map((carousel) => {
+            return(
+
+            <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}></ScrollView>
+
             */

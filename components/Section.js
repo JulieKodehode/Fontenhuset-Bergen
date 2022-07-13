@@ -5,7 +5,7 @@ import { Footer } from './Footer';
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import { SectionNav } from "../App";
-import { useState } from "react";
+
 
 
 
@@ -17,36 +17,38 @@ import { useState } from "react";
 
 // meeting and enhet setup
 
-export default function Section({carouselData, mainHeader, headerImg}){
+export default function Section({carouselData, mainHeader, headerImg, press, backClick}){
 
-    const [section, setSection] = useState()
-
-    const clickHandler= ()=> {
-
-        setSection()
-    }
+   
 
   
 
     return(
 
+
+        
         <View >
-            <Image 
-           style={styles.frontImage}
-           source={headerImg}
-           />
-           <View style={styles.arrowContainer}>
-                <AntDesign name="leftcircle" size={24} color="white" />
-                <AntDesign name="rightcircle" size={24} color="white"  onPress={clickHandler}/>
+            <View style={styles.imageDiv}>
+                    <Image 
+                style={styles.frontImage}
+                source={headerImg}
+                />
+                <View style={styles.arrowContainer}>
+                        <AntDesign name="leftcircle" size={24} color="white" onPress={backClick}/>
+                        <AntDesign name="rightcircle" size={24} color="white"  onPress={press}/>
+                </View>
+                <Text style={styles.header}>{mainHeader}</Text>
            </View>
-           <Text style={styles.header}>{mainHeader}</Text>
            
-          
+           <ScrollView bounces={false} showsVerticalScrollIndicator={false} >
+               <View style={styles.ScrollContainer}>
                     <View style={styles.container}>
                         <Carousel carouselData={carouselData}  />
                     </View>
-            <Footer/>      
+                </View>
+            </ScrollView>     
         </View>
+       
     )
 }
 
@@ -56,17 +58,21 @@ export default function Section({carouselData, mainHeader, headerImg}){
 
 const styles = StyleSheet.create({
 
+imageDiv:{
+        position:'absolute',
+        zIndex: 1
+    },
+
 frontImage:{
     width: 412,
-    height: 270,
-    opacity: 0.6
+    height: 200,
+    opacity: 1
 },
 header:{
     fontSize: 35,
     position: 'absolute',
     fontWeight: 'bold',
     top: 80,
-    left: 10, 
     color: 'white',
     width: 400, 
     textAlign: 'center'
@@ -85,11 +91,18 @@ arrowContainer:{
     flexDirection: 'row',
     position: "absolute",
     justifyContent: 'space-between',
-    width: 400, 
-    top: 220,
-    opacity: 0.8
+    width: 350, 
+    top: 165,
+    opacity: 0.8,
+    marginLeft: 18
     
 
+},
+
+ScrollContainer:{
+ height: 600, 
+ marginTop: 200,
+ overflow: 'hidden'
 }
 
 

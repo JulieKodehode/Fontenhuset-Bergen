@@ -77,12 +77,12 @@ export const meetingData=[
     {
 
         id: '4',
-        image: require('./assets/Podcast.jpg'),
-        header:'Media',
-        info: ['Dag: Tirsdag',
-                'Tid: 11-12',
+        image: require('./assets/samarbeid.jpg'),
+        header:'Samkjøringsmøte',
+        info: ['Dag: Torsdag',
+                'Tid: 14.00',
                 'Hva gjør møte?',
-                'Media diskuterer hva de har gjort og hva de trenger å gjøre fremover']
+                'Alle avdelingene informerer kort om hva som skjer på avdelingen. Hva kan de trenge hjelp av andre avdelinger til?']
     },
 
    ]
@@ -109,14 +109,14 @@ export const sectionData=[
                     id:'11',
                     image: require('./assets/slette-filer.jpg'),
                     header:'Slette filer',
-                    hnfo:'En gang i uken går man igjennom nedlastede filer og sletter dem. Det er viktig for å holde orden i systemene'
+                    info:'En gang i uken går man igjennom nedlastede filer og sletter dem. Det er viktig for å holde orden i systemene'
                 }, 
 
                 {
                     id:'12',
-                    image: require('./assets/reach out.jpg'),
+                    image: require('./assets/reachout.jpg'),
                     header: 'Reach out',
-                    hnfo: 'De som vil kan sette seg opp til Reach out. Det vil si at hvis du har vært borte en stund fra huset tar vi kontakt med deg for å høre hvordan du har det.'
+                    info: 'De som vil kan sette seg opp til Reach out. Det vil si at hvis du har vært borte en stund fra huset tar vi kontakt med deg for å høre hvordan du har det.'
                 }, 
 
                 { 
@@ -173,7 +173,7 @@ export const sectionData=[
                     id:'22',
                     image: require('./assets/filserver2.jpg'),
                     header:'Rydde filserver',
-                    info:'Onsdager er ryddedag. På vår felles filserver er det et enormt hav av bilder og filer. Det håper vi å få litt orden på dette etterhvert'
+                    info:'Onsdager er ryddedag. På vår felles filserver er det et enormt hav av bilder og filer. Det håper vi å få litt orden på etterhvert'
                 },
 
                 {
@@ -185,14 +185,14 @@ export const sectionData=[
 
                 {
                     id:'24',
-                    image: require('./assets/sosiale medier.jpg'),
+                    image: require('./assets/sosialemedier.jpg'),
                     header:'Sosiale medier',
                     info:'Media skal fronte Fontenehuset utad gjennom sosiale medier. På fredager setter vi oss ned og planlegger sosiale medier for uken som kommer, hvilke ting på huset skal vi dekke?'
                 },
 
                 {
                     id:'25',
-                    image: require('./assets/ny avdeling.jpg'),
+                    image: require('./assets/nyavdeling.jpg'),
                     header:'Ny avdeling',
                     info:'Media skal flytte etasje fra 3. til 2. etasje. Vi trenger derfor å tenke ut hvordan vi ønsker at avdelingen skal bli og lage en plan for det'
                 }
