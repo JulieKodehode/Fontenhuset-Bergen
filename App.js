@@ -5,6 +5,7 @@ import Meeting from './components/Meeting';
 import Section from './components/Section'
 import Profile from './components/Profile';
 import Kontakt from './components/Kontakt';
+import Info from './components/Info';
 import { Footer } from './components/Footer';
 import { homeData, sectionData, meetingData } from './Data';
 import { NavigationContainer } from '@react-navigation/native';
@@ -104,12 +105,13 @@ export default function App(){
   return (
   
       <NavigationContainer styles={styles.container}>
-        <Stack.Navigator   initialRouteName="Home">
-          <Stack.Screen name="Home" component={MapHome} />
+        <Stack.Navigator   initialRouteName="Home" >
+          <Stack.Screen name="Home" component={MapHome}  options={{headerShown: false}}/>
           <Stack.Screen name="Meeting" component={MapMeeting} />
           <Stack.Screen name="Enheter" component={MapSection} />
           <Stack.Screen name ="Profile" component={Profile}/>
           <Stack.Screen name ="Kontakt" component={Kontakt}/>
+          <Stack.Screen name ="Info" component={Info}/>
         </Stack.Navigator>
         <Footer />
       </NavigationContainer>

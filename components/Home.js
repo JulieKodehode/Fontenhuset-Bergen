@@ -1,43 +1,94 @@
-import { StyleSheet, Text,Image, View, ScrollView} from 'react-native';
+import { StyleSheet, Text,Image, View, ScrollView, Modal, Pressable, Button, AppRegistry} from 'react-native';
 import {CarouselHome} from './Carousel';
-
+import { useState } from 'react';
+import { AntDesign } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
 import { Footer } from './Footer';
+import { useNavigation } from '@react-navigation/native';
+import { nunito } from 'react-native-typography'
+import { homeData } from '../Data';
+
+
 
 
 
 
 export default function Home(props){
-    return(
+    
+  const [modalVisible, setModalVisible] = useState(false);
+   
+  const navigation = useNavigation()
+  // ENDRE MODAL TIL Å INNEHOLDE "OPPMUNTRING", MATH RANDOM??
 
-      <ScrollView>
+
+  function NyOppmuntring(){
+    return Math.floor(Math.random() * max);
+  }
+  
+  return(
+
+        
+
+      
         <View style={styles.container}>
          
+         
+            <Modal
+                    style={styles.modal}
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                    }}
+                >
+                <View style={styles.oppmuntringsBox}>
+                    <AntDesign name="close" size={24} color="black" onPress={() => setModalVisible(false)} style={styles.oppmuntringClose}/>
+                    
+                        <Image 
+                        resizeMode='contain'
+                         style={styles.oppmuntringImg} 
+                         source= {require('../assets/memeErna.jpg')}/>
+                      <View  style={styles.oppmuntringBtn}>
+                         <Button  title="Få en ny"  color= "#F4B09A"/>
+                      </View>
+                        
+                </View>
+                
+            </Modal>
         
         
          
-           <Image 
-               style={styles.tinyLogo}
-               source={require('../assets/Logo.svg')}
-           />
-           <Image 
-           style={styles.frontImage}
-           source={props.headerImg}/>
+           
+          
             
-            <Text style={styles.header}>Fontenehuset</Text>
-            <Text style={styles.headerTwo}>Bergen</Text>
-            <Text style={styles.TextBox}>Få en oppmuntring</Text>
-            <Text style={styles.dagenIdag}>Hva skjer?</Text>
-        
-            
-        
+      
+            <View style={styles.topText}>
+          
+
+                <Text style={styles.dagenIdag}
+                
+                onPress={() => setModalVisible(!modalVisible) }>Oppmuntring</Text>
+                <Text style={styles.dagenIdag} onPress={()=> navigation.push('Info')}>Hva skjer?</Text>
+            </View>
+
+            <View style={styles.headerDiv}>
+                <Text style={styles.header}>Fontenehuset</Text>
+                <Text style={styles.headerTwo}>Bergen</Text>
+            </View>
+
             <Text style={styles.BodyHeader}>Om Huset</Text>
+        
+            <CarouselHome  carouselData={props.carouselData}  />  
+        
+            
 
 
-            <CarouselHome  carouselData={props.carouselData}  />
+            
        
-          </View>
-          </ScrollView>
+    </View>
+       
 
     )
 }
@@ -47,14 +98,15 @@ export default function Home(props){
 const styles = StyleSheet.create({
     container: {
       maxWidth: 412,
-      Height: 300,
+      height: 700,
+      backgroundColor: 'white'
       
     },
     tinyLogo: {
       width: 50,
       height: 50,
-      position:'absolute',
-      top: 15,
+      color: 'black'
+      
 
 
     },
@@ -64,74 +116,168 @@ const styles = StyleSheet.create({
       borderStyle:'solid',
       textAlign: 'center',
       paddingTop: 5,
-      color: 'white', 
+      color: 'black', 
       position: 'absolute',
       top: 150,
       left: 135,
       fontWeight: 'bold',
       borderWidth: 1, 
-      borderColor: 'white'
+      borderColor: 'black'
       
+
+    },
+
+    headerDiv:{
+         
+        marginTop: 50
 
     },
 
     header:{
         fontSize: 30,
-        position: 'absolute',
         fontWeight: 'bold',
-        top: 60,
-        left: 85, 
-        color: 'white'
+        color: 'black',
+        marginLeft: 90
 
     
     },
     headerTwo:{
         fontSize: 30,
-        position: 'absolute',
-        fontWeight: 'bold',
-        top: 100,
-        left: 135, 
-        color: 'white'
+        color: 'black',
+        marginLeft: 145
 
     
     },
     frontImage:{
         width: 412,
-        height: 210,
-        opacity: 0.6 
+        height: 210
     },
     dagenIdag:{
         width: 100,
-        height: 30,
-        borderColor: 'white',
-        borderRadius: 15,
+        height: 25,
+        borderColor: 'black',
+        borderRadius: 12,
         borderStyle: 'solid',
-        color: 'white', 
-        position: 'absolute',
-        left: 270,
-        top: 25,
-        fontSize: 16,
+        fontSize: 12,
         textAlign:'center',
-        borderWidth: 2, 
-        borderColor: 'white',
-        paddingTop: 3
+        borderWidth: 1, 
+        borderColor: '#F4B09A',
+        paddingTop: 3, 
+        marginLeft: 10
         
 
     },
 
     BodyHeader:{
-        fontSize: 25,
+        fontSize: 18,
         textAlign:'center',
-        fontWeight: 'bold',
-        marginTop: 50,
-        marginBottom: 20,
+        fontStyle: 'italic',
+        marginTop: 40,
+        marginBottom: 10,
         color:"#A8A8A8",
         textDecorationLine:'underline'
+    },
+    bestillText: {
+      fontSize: 18,
+      textAlign: 'center'
+   },
+
+   bestillBox:{
+      display: 'flex',
+      justifyContent:'center',
+      alignItems:'center', 
+      marginTop: 100,
+      width: 200,
+      height: 200,
+      backgroundColor: 'white',
+      marginLeft: 80,
+      borderRadius: 10
+      
+   },
+
+   oppmuntringsBox:{
+    
+    display: 'flex',
+    justifyContent:'center',
+    alignItems:'center', 
+    marginTop: 280,
+    width: 400,
+    height: 300,
+    backgroundColor: 'white',
+    marginLeft: 0,
+    borderRadius: 10
+
+   },
+
+   closeButton:{
+      display: 'flex',
+      height: 50,
+      width: 100,
+      backgroundColor: '#FDE1E1',
+      alignItems: 'center',
+      justifyContent:'center',
+      borderRadius: 10,
+      marginTop: 30
+   }, 
+
+   modal:{
+      display: 'flex',
+      justifyContent:'center',
+      height: 400,
+      width: 300
+   },
+
+   closeIcon:{
+      marginLeft: 135,
+      marginBottom: 10
+   },
+
+   oppmuntringImg:
+    {
+        width: '100%',
+        height: '100%',
+        aspectRatio: 1,
+        marginBottom: 50,
+        marginTop: 50
+    },
+    
+    oppmuntringClose:{
+        left: 340,
+        bottom: 260,
+        position: 'absolute',
+        zIndex: 1
+    },
+
+    oppmuntringBtn:{
+        width: 120,
+        height: 37,
+        borderBottomColor: "#F4B09A",
+        borderBottomStyle: 'solid',
+        borderRadius: 10,
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 260,
+        marginBottom: 20
+        
+    }, 
+
+    topText:{
+      display: 'flex',
+      flexDirection: 'row',
+      width: 300,
+      marginLeft: 140, 
+      marginTop: 50
+
     }
+
+
+
+   
     
 
   });
 
 
-  //backgroundColor: 'rgba(0, 41, 70, 0.5)'
+  //backgroundColor: 'rgba(0, 41, 70, 0.5)' <CarouselHome  carouselData={props.carouselData}  />  <Text style={styles.BodyHeader}>Om Huset</Text>
   

@@ -31,7 +31,7 @@ export function CarouselHomeElement({img, text, CarouselKey, onPress}){
               <LinearGradient style={styles.husetHeader} colors={['rgba(0,0,0,0.6)', 'transparent']}>
                  <Text style={styles.text}>{text}</Text>
               </LinearGradient >
-              <LinearGradient style={styles.lightBox} colors={['transparent', '(rgba(242,240,240,1)']} >
+              <LinearGradient style={styles.lightBox} colors={['transparent', '(rgba(242,240,240,0.5)']} >
                 <Text style={styles.lightBoxText}  onPress={onPress} >Se mer</Text>
               </LinearGradient> 
         
@@ -89,18 +89,18 @@ const styles = StyleSheet.create({
 
    
     imageBox: {
-        width: 170,
-        height: 170,
+        width: 300,
+        height: 240,
         borderRadius: 10,
-        marginRight: 30
+        marginRight: 0
    
    
     },
     lightBox:{
         height: 50,
-        width: 170, 
+        width: 300, 
         position: 'absolute',
-        top: 130,
+        top: 190,
         textAlign:'center',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10
@@ -108,21 +108,21 @@ const styles = StyleSheet.create({
 
     },
     lightBoxText:{
-        fontSize: 16, 
-        marginTop: 8,
-        color: 'white',
-        fontWeight: '500', 
-        textAlign:'center'
+        fontSize: 17, 
+        marginTop: 12,
+        color: 'white', 
+        textAlign:'center',
+        fontWeight: 'bold'
     },
 
    
 
     text: {
         marginTop: 10,
-        fontSize: 18, 
+        fontSize: 20, 
         textAlign: 'center', 
         color: 'rgba(242,240,240, 1)',
-        fontWeight: 'bold',
+        fontStyle: 'italic',
         marginLeft: 5
         
     },
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     husetHeader: {
         backgroundColor: 'linear-gradient(rgba(0,0,0,0.8), transparent)', 
         position: 'absolute', 
-        width: 170,
+        width: 300,
         height: 40,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10
@@ -192,8 +192,8 @@ const styles = StyleSheet.create({
     }, 
 
     homeBox:{
-        display: 'flex',
-        flexDirection: 'column'
+        width: 330,
+        marginLeft: 30
     },
 
     imgShadow:{
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 5, height: 4},
         shadowOpacity: 0.2,
         shadowRadius: 10, 
-        marginRight: 40
+        marginRight: 0
         
 
     },

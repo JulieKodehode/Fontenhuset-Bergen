@@ -13,18 +13,18 @@ export const homeData=[
     {   
         id: '002',
         image: require('./assets/arbeidsenheter.jpg'),
-        text: 'enheter'
+        text: 'Enheter'
     },
 
     {
         id: '003',
-        image: require('./assets/fritid.jpg'),
-        text: 'fritid'
+        image:   require('./assets/møte.jpg'),
+        text: 'Møter'
     },
     {
         id: '004',
-        image: require('./assets/møte.jpg'),
-        text: 'møter'
+        image: require('./assets/fritid.jpg'),
+        text: 'Fritid'
     }, 
 
     {
@@ -33,6 +33,15 @@ export const homeData=[
         image: require('./assets/cafe.jpg'),
         text: 'cafe koppen'
     }
+        ],
+
+    modal: [
+        {
+         id: 200,
+         image: require('./assets/memeErna.jpg')
+         
+          }
+     
         ]
 }
 
@@ -236,6 +245,8 @@ export const sectionData=[
             
             ]
     }
+
+
   
 
   

@@ -20,6 +20,7 @@ export default function Meeting(props){
                 source={props.headerImg}
                 />
                 <Text style={styles.header}>{props.mainHeader}</Text>
+                
            </View>
          <ScrollView bounces={false} showsVerticalScrollIndicator={false} >
             <View style={styles.ScrollContainer}>

@@ -38,6 +38,8 @@ export default function Section({carouselData, mainHeader, headerImg, press, bac
                         <AntDesign name="rightcircle" size={24} color="white"  onPress={press}/>
                 </View>
                 <Text style={styles.header}>{mainHeader}</Text>
+                <Text style ={styles.subHeader}> Arbeidsoppgaver</Text>
+
            </View>
            
            <ScrollView bounces={false} showsVerticalScrollIndicator={false} >
@@ -80,6 +82,16 @@ header:{
 
 
 },
+
+subHeader:{
+    position: 'absolute',
+    top: 130,
+    left: 125,
+    fontSize: 18,
+    fontStyle:'italic', 
+    color: 'white'
+},
+
 container:{
     display: 'flex',
     flexDirection: 'row',

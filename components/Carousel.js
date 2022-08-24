@@ -14,19 +14,26 @@ export function CarouselHome({carouselData}){
    const navigation = useNavigation()
 
    return(
-    <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false} bounces={false}>
-    <View style={styles.homeContainer}>
-       
-      
-      <View key={`ViewThree-${carouselData.id}`} style= {styles.homeContainer}>
-              <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[0].image} title={carouselData[0].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[0].text} />
-              <CarouselHomeElement onPress={() => navigation.push('Profile')} img={carouselData[1].image} title={carouselData[1].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[1].text} />
-              <CarouselHomeElement onPress={() => navigation.push('Meeting')} img={carouselData[2].image} title={carouselData[2].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[2].text} />
-              <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[3].image} title={carouselData[3].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[3].text} />
-      </View>
-              
-    </View>       
-    </ScrollView>
+     
+
+    <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showHorizontalScrollIndicator={false} bounces={false} contentContainerStyle={{
+        flexGrow: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+      }} >
+        <View style={styles.homeContainer}>
+    
+        
+                <View key={`ViewThree-${carouselData.id}`} style= {styles.homeContainer}>
+                        <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[0].image} title={carouselData[0].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[0].text} />
+                        <CarouselHomeElement onPress={() => navigation.push('Meeting')} img={carouselData[1].image} title={carouselData[1].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[1].text} />
+                        <CarouselHomeElement onPress={() => navigation.push('Profile')} img={carouselData[2].image} title={carouselData[2].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[2].text} />
+                        <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[3].image} title={carouselData[3].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[3].text} />
+                </View>
+   
+        </View>
+    </ScrollView>  
+   
    )
 }
 
@@ -114,7 +121,7 @@ const styles = StyleSheet.create({
     },
 
     ScrollView: {
-        marginHorizontal: 10,
+        marginHorizontal: 8
         
     }, 
 
@@ -192,5 +199,8 @@ const styles = StyleSheet.create({
             return(
 
             <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false}></ScrollView>
+
+             HOME- SCROLLVIEW
+            <ScrollView style={styles.ScrollView} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false} bounces={false}>
 
             */
