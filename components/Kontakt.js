@@ -1,4 +1,4 @@
-import MapView from 'react-native-maps';
+//import MapView from 'react-native-maps';
 import { StyleSheet, Text,Image, View, ScrollView, Dimensions, TextInput, Button, FlatList, SafeAreaView, StatusBar} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { useState } from 'react';
@@ -16,9 +16,7 @@ export default function Kontakt(){
 
     return(
     <View style={styles.mainContainer}>
-      <View >
-        <MapView style={styles.map} />
-      </View>
+      
 
       <View style={styles.kontaktInfo}>
         <Text style={styles.kontaktHeader}> Kontaktinfo</Text>
@@ -133,3 +131,8 @@ const styles = StyleSheet.create({
     }
 
 })
+
+
+/*<View >
+        <MapView style={styles.map} />
+      </View>*/

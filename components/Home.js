@@ -7,22 +7,32 @@ import { Footer } from './Footer';
 import { useNavigation } from '@react-navigation/native';
 import { nunito } from 'react-native-typography'
 import { homeData } from '../Data';
+import { ModalData } from '../Data';
 
 
 
-
+let newArray = ["apples", "oranges", "peares"]
 
 
 export default function Home(props){
+
+
     
   const [modalVisible, setModalVisible] = useState(false);
+  const [newModal, setNewModal] = useState(ModalData[0])
    
   const navigation = useNavigation()
   // ENDRE MODAL TIL Å INNEHOLDE "OPPMUNTRING", MATH RANDOM??
-
+  
 
   function NyOppmuntring(){
-    return Math.floor(Math.random() * max);
+
+    
+ 
+    let Ny=  ModalData[Math.floor(Math.random() * ModalData.length)]  
+    
+    setNewModal(Ny)
+
   }
   
   return(
@@ -46,18 +56,22 @@ export default function Home(props){
                 <View style={styles.oppmuntringsBox}>
                     <AntDesign name="close" size={24} color="black" onPress={() => setModalVisible(false)} style={styles.oppmuntringClose}/>
                     
+
+                        <Text style={styles.oppmuntringsTekst}>{newModal.text}</Text>
                         <Image 
-                        resizeMode='contain'
+                         resizeMode='contain'
                          style={styles.oppmuntringImg} 
-                         source= {require('../assets/memeErna.jpg')}/>
-                      <View  style={styles.oppmuntringBtn}>
-                         <Button  title="Få en ny"  color= "#F4B09A"/>
-                      </View>
+                         source= {newModal.image}/>
                         
+                      <View  style={styles.oppmuntringBtn}>
+                         <Button  title="Få en ny"  color= "#F4B09A" onPress={NyOppmuntring}/>
+                      </View>
+                     
                 </View>
                 
             </Modal>
         
+           
         
          
            
@@ -94,6 +108,8 @@ export default function Home(props){
 }
 
 
+
+console.log(ModalData)
 
 const styles = StyleSheet.create({
     container: {
@@ -235,7 +251,7 @@ const styles = StyleSheet.create({
    oppmuntringImg:
     {
         width: '100%',
-        height: '100%',
+        height: '80%',
         aspectRatio: 1,
         marginBottom: 50,
         marginTop: 50
@@ -249,25 +265,37 @@ const styles = StyleSheet.create({
     },
 
     oppmuntringBtn:{
-        width: 120,
-        height: 37,
-        borderBottomColor: "#F4B09A",
-        borderBottomStyle: 'solid',
+        width: 150,
+        height: 35,
+        borderColor: "#F4B09A",
+        borderWidth: 1,
         borderRadius: 10,
-        display: 'flex',
-        justifyContent: 'center',
         position: 'absolute',
-        top: 260,
-        marginBottom: 20
+        top: 280
+        
         
     }, 
+
+    oppmuntringsTekst:{
+        
+        fontStyle:'italic',
+        fontWeight: 'bold',
+        fontSize: 22,
+        position:'absolute',
+        zIndex: 1,
+        width: 120,
+        color: 'white',
+        top: 160
+
+    },
 
     topText:{
       display: 'flex',
       flexDirection: 'row',
       width: 300,
       marginLeft: 140, 
-      marginTop: 50
+      marginTop: 50,
+      
 
     }
 

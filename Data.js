@@ -33,18 +33,9 @@ export const homeData=[
         image: require('./assets/cafe.jpg'),
         text: 'cafe koppen'
     }
-        ],
+        ]}
 
-    modal: [
-        {
-         id: 200,
-         image: require('./assets/memeErna.jpg')
-         
-          }
-     
-        ]
-}
-
+ 
 
 ]
 
@@ -251,6 +242,43 @@ export const sectionData=[
 
   
 
+
+]
+
+export const ModalData =[
+    {
+        id: 200,
+        image: require('./assets/memeErna.jpg')
+        
+         },
+
+       {
+           id: 201,
+           image: require('./assets/bergenMeme2.jpg')
+           
+       },
+
+       {
+           id: 202,
+           image: require('./assets/leavingWorkMeme.jpg')
+           
+           },
+
+       {
+           id: 204,
+           image: require('./assets/Frokost.jpg'),
+           text: 'Vi er her hvis du trenger oss'
+        
+        
+        },
+
+        {
+            id: 205,
+            image: require('./assets/Benk.jpg'),
+            text: 'Her er du alltid velkommen'
+         
+         
+         }
 
 ]
 
