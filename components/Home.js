@@ -6,12 +6,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Footer } from './Footer';
 import { useNavigation } from '@react-navigation/native';
 import { nunito } from 'react-native-typography'
-import { homeData } from '../Data';
+import { homeData, MemeData } from '../Data';
 import { ModalData } from '../Data';
 
 
 
-let newArray = ["apples", "oranges", "peares"]
+
+
 
 
 export default function Home(props){
@@ -20,9 +21,24 @@ export default function Home(props){
     
   const [modalVisible, setModalVisible] = useState(false);
   const [newModal, setNewModal] = useState(ModalData[0])
+
+  const [funVisible, setFunVisible] = useState(false)
+  const [Meme, setMeme] = useState(MemeData[0])
    
   const navigation = useNavigation()
-  // ENDRE MODAL TIL Å INNEHOLDE "OPPMUNTRING", MATH RANDOM??
+  
+
+  function NyMeme(){
+
+    
+ 
+    let NyMeme=  MemeData[Math.floor(Math.random() * MemeData.length)]  
+    
+    setMeme(NyMeme)
+
+  }
+
+
   
 
   function NyOppmuntring(){
@@ -41,6 +57,36 @@ export default function Home(props){
 
       
         <View style={styles.container}>
+
+
+            
+        <Modal
+                    style={styles.modal}
+                    animationType="slide"
+                    transparent={true}
+                    visible={funVisible}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setFunVisible(!funVisible);
+                    }}
+                >
+                <View style={styles.oppmuntringsBox}>
+                    <AntDesign name="close" size={24} color="black" onPress={() => setFunVisible(false)} style={styles.oppmuntringClose}/>
+                    
+
+                       
+                        <Image 
+                         resizeMode='contain'
+                         style={styles.oppmuntringImg} 
+                         source= {Meme.image}/>
+                        
+                      <View  style={styles.oppmuntringBtn}>
+                         <Button  title="Få en ny"  color= "#F4B09A" onPress={NyMeme}/>
+                      </View>
+                     
+                </View>
+                
+            </Modal>
          
          
             <Modal
@@ -79,6 +125,10 @@ export default function Home(props){
             
       
             <View style={styles.topText}>
+
+                <Text style={styles.dagenIdag}
+                
+                onPress={() => setFunVisible(!modalVisible) }>Noe morsomt</Text>
           
 
                 <Text style={styles.dagenIdag}
@@ -266,7 +316,7 @@ const styles = StyleSheet.create({
 
     oppmuntringBtn:{
         width: 150,
-        height: 35,
+        height: 39,
         borderColor: "#F4B09A",
         borderWidth: 1,
         borderRadius: 10,
@@ -283,9 +333,12 @@ const styles = StyleSheet.create({
         fontSize: 22,
         position:'absolute',
         zIndex: 1,
-        width: 120,
+        width: 140,
         color: 'white',
-        top: 160
+        top: 170,
+        backgroundColor: 'linear-gradient(rgba(0,0,0,0.3), transparent)',
+        padding: 10
+
 
     },
 
@@ -293,7 +346,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       flexDirection: 'row',
       width: 300,
-      marginLeft: 140, 
+      marginLeft: 20, 
       marginTop: 50,
       
 

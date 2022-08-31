@@ -209,7 +209,7 @@ export const sectionData=[
     {       
 
             id: '04',
-            img: require('./assets/Kjøkken2.jpg'),
+            img: require('./assets/Kjøkken3.png'),
             title: "Kjøkken",
             carouselle:[
                 {
@@ -246,23 +246,7 @@ export const sectionData=[
 ]
 
 export const ModalData =[
-    {
-        id: 200,
-        image: require('./assets/memeErna.jpg')
-        
-         },
-
-       {
-           id: 201,
-           image: require('./assets/bergenMeme2.jpg')
-           
-       },
-
-       {
-           id: 202,
-           image: require('./assets/leavingWorkMeme.jpg')
-           
-           },
+    
 
        {
            id: 204,
@@ -278,7 +262,95 @@ export const ModalData =[
             text: 'Her er du alltid velkommen'
          
          
-         }
+         },
+
+        {
+            
+            id: 206,
+            image: require('./assets/BB.png'),
+            text: 'Du er god nok for oss'
+
+        }, 
+
+        {
+            
+            id: 207,
+            image: require('./assets/JB.png'),
+            text: 'Vi liker deg'
+        }
+
+]
+
+export const MemeData =[
+
+    {
+        id: 230,
+        image: require('./assets/memeErna.jpg')
+        
+         },
+
+       {
+           id: 231,
+           image: require('./assets/bergenMeme2.jpg')
+           
+       },
+
+       {
+           id: 232,
+           image: require('./assets/leavingWorkMeme.jpg')
+           
+           },
+
+    
+           {
+            id: 233,
+            image: require('./assets/workMeme.jpg')
+            
+            },
+
+            {
+                id: 234,
+                image: require('./assets/spider.jpg')
+                
+                },
+
+            {
+                    id: 235,
+                    image: require('./assets/workMeme2.jpg')
+                    
+                    },
+            
+            {
+                        id: 236,
+                        image: require('./assets/catMeme.jpg')
+                        
+                        },
+
+            {
+                        id: 237,
+                        image: require('./assets/passord.jpg')
+                            
+                        },
+            
+            {
+                        id: 238,
+                        image: require('./assets/fluff.jpg')
+                                
+                        },
+            
+            {
+                        id: 239,
+                        image: require('./assets/calm.png')
+                                    
+                        },
+            
+            {
+                        id: 240,
+                            image: require('./assets/airplane.jpg')
+                            
+                            }
+            
+
 
 ]
 

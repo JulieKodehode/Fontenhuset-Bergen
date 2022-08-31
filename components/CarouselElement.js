@@ -1,11 +1,13 @@
 
-import { StyleSheet, Text,Image, View, useWindowDimensions, TouchableWithoutFeedbackBase, Button } from 'react-native';
+import { StyleSheet, Text,Image, View, useWindowDimensions, TouchableWithoutFeedbackBase, Button} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { meetingData } from '../Data';
 import Meeting from './Meeting';
-
+import { Modal } from 'react-native';
+import { AntDesign } from '@expo/vector-icons'; 
+import { useState } from 'react';
 import { homeData } from '../Data';
 
 
@@ -16,7 +18,7 @@ import { homeData } from '../Data';
 
 export function CarouselHomeElement({img, text, CarouselKey, onPress}){
 
-    
+   
    
 
     return(
@@ -46,20 +48,68 @@ export function CarouselHomeElement({img, text, CarouselKey, onPress}){
 
 
 export function CarouselMeetingElement(props){
+
+const [meetingModal, setMeetingModal] = useState(false);
+const  [meetingImage, setMeetingImage] = useState(true)
+
     return(
 
-    <View key={props.CarouselKey} style={styles.meetingBox} >
-        <Text style={styles.header}>{props.title}</Text>
-        <View style={styles.imgShadow}>
-          <Image style={styles.meetingImageBox} source= {props.img}/>
-        </View>
+<View >
+
+   
         <View style={styles.infoBox}>
-            <Text style={styles.meetingInfo}>{props.dag} </Text>
-            <Text style={styles.meetingInfo}>{props.tid} </Text>
-            <Text style={styles.meetingInfo}>{props.infoHeader} </Text>
-            <Text style={styles.meetingInfo}>{props.infoText} </Text>
+            <Modal
+            
+            style={styles.meetingBox}
+            animationType="slide"
+            transparent={true}
+            visible={meetingModal}
+            onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setMeetingModal(!meetingModal);
+            }}
+            
+            >
+                    <AntDesign name="close" size={24} color="black" onPress={() => [setMeetingModal(false), setMeetingImage(true)]} style={styles.oppmuntringClose}/>
+                    <Text style={styles.meetingInfo}>{props.dag} </Text>
+                    <Text style={styles.meetingInfo}>{props.tid} </Text>
+                    <Text style={styles.meetingInfo}>{props.infoHeader} </Text>
+                    <Text style={styles.meetingInfo}>{props.infoText} </Text>
+            </Modal>
         </View>
-    </View>
+
+   
+
+
+
+    
+        <View  >
+            <Modal
+                key={props.CarouselKey} 
+                style={styles.meetingBox}
+                img={props.img}
+                animationType="slide"
+                transparent={true}
+                visible={meetingImage}
+                onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setMeetingImage(!meetingImage);
+                }}
+                        
+                >
+                    <Text style={styles.header}>{props.title}</Text>
+                    <View style={styles.imgShadow}/>
+                    <Image style={styles.meetingImageBox} source= {props.img}/>
+                    <AntDesign name="caretdown" size={24} color="black" onPress={() => [setMeetingModal(!meetingModal), setMeetingImage(!meetingImage)]} />
+            </Modal>
+        </View>
+            
+        
+        
+  
+
+</View>
+    
         
         
         
