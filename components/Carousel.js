@@ -28,7 +28,7 @@ export function CarouselHome({carouselData}){
                         <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[0].image} title={carouselData[0].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[0].text} />
                         <CarouselHomeElement onPress={() => navigation.push('Meeting')} img={carouselData[1].image} title={carouselData[1].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[1].text} />
                         <CarouselHomeElement onPress={() => navigation.push('Profile')} img={carouselData[2].image} title={carouselData[2].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[2].text} />
-                        <CarouselHomeElement onPress={() => navigation.push('Enheter')} img={carouselData[3].image} title={carouselData[3].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[3].text} />
+                        <CarouselHomeElement onPress={() => navigation.push('Cafe')} img={carouselData[3].image} title={carouselData[3].header} CarouselKey={`carousel-${carouselData.id}`} text={carouselData[3].text} />
                 </View>
    
         </View>

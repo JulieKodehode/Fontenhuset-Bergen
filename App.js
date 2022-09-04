@@ -6,6 +6,8 @@ import Section from './components/Section'
 import Profile from './components/Profile';
 import Kontakt from './components/Kontakt';
 import Info from './components/Info';
+import Fontenehus from './components/Fontenehuset';
+import { Cafe } from './components/cafe';
 import { Footer } from './components/Footer';
 import { homeData, sectionData, meetingData } from './Data';
 import { NavigationContainer } from '@react-navigation/native';
@@ -112,6 +114,8 @@ export default function App(){
           <Stack.Screen name ="Profile" component={Profile}/>
           <Stack.Screen name ="Kontakt" component={Kontakt}/>
           <Stack.Screen name ="Info" component={Info}/>
+          <Stack.Screen name ="Cafe" component ={Cafe}/>
+          <Stack.Screen name ="Fontenehus" component ={Fontenehus}/>
         </Stack.Navigator>
         <Footer />
       </NavigationContainer>

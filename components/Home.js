@@ -164,7 +164,7 @@ console.log(ModalData)
 const styles = StyleSheet.create({
     container: {
       maxWidth: 412,
-      height: 700,
+      height: '100%',
       backgroundColor: 'white'
       
     },
@@ -220,15 +220,16 @@ const styles = StyleSheet.create({
     },
     dagenIdag:{
         width: 100,
-        height: 25,
+        height: 20,
         borderColor: 'black',
-        borderRadius: 12,
+        borderRadius: 20,
         borderStyle: 'solid',
         fontSize: 12,
         textAlign:'center',
         borderWidth: 1, 
         borderColor: '#F4B09A',
-        paddingTop: 3, 
+        paddingTop: 10,
+        paddingBottom:25, 
         marginLeft: 10
         
 
@@ -266,9 +267,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent:'center',
     alignItems:'center', 
-    marginTop: 280,
+    marginTop: 270,
     width: 400,
-    height: 300,
+    height: 330,
     backgroundColor: 'white',
     marginLeft: 0,
     borderRadius: 10
@@ -303,13 +304,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '80%',
         aspectRatio: 1,
-        marginBottom: 50,
+        marginBottom: 100,
         marginTop: 50
     },
     
     oppmuntringClose:{
         left: 340,
-        bottom: 260,
+        bottom: 310,
         position: 'absolute',
         zIndex: 1
     },
@@ -347,7 +348,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       width: 300,
       marginLeft: 20, 
-      marginTop: 50,
+      marginTop: 70
       
 
     }

@@ -42,7 +42,7 @@ export default function Section({carouselData, mainHeader, headerImg, press, bac
 
            </View>
            
-           <ScrollView bounces={false} showsVerticalScrollIndicator={false} >
+           <ScrollView bounces={false} showsVerticalScrollIndicator={true}  >
                <View style={styles.ScrollContainer}>
                     <View style={styles.container}>
                         <Carousel carouselData={carouselData}  />
@@ -113,7 +113,6 @@ arrowContainer:{
 
 ScrollContainer:{
  height: 600, 
- marginTop: 200,
  overflow: 'hidden'
 }
 

@@ -54,15 +54,13 @@ const  [meetingImage, setMeetingImage] = useState(true)
 
     return(
 
-<View >
-
-   
-        <View style={styles.infoBox}>
-            <Modal
+<View style={styles.meetingBox}>
+    
+        <Modal
             
-            style={styles.meetingBox}
+            style={styles.modal}
             animationType="slide"
-            transparent={true}
+            transparent={false}
             visible={meetingModal}
             onRequestClose={() => {
             Alert.alert("Modal has been closed.");
@@ -70,38 +68,33 @@ const  [meetingImage, setMeetingImage] = useState(true)
             }}
             
             >
-                    <AntDesign name="close" size={24} color="black" onPress={() => [setMeetingModal(false), setMeetingImage(true)]} style={styles.oppmuntringClose}/>
+         <AntDesign name="close" size={20} color="black" onPress={() => setMeetingModal(false)} style={styles.closeIcon}/>
+         <View style={styles.modalBox}>
+           
+                   
                     <Text style={styles.meetingInfo}>{props.dag} </Text>
                     <Text style={styles.meetingInfo}>{props.tid} </Text>
                     <Text style={styles.meetingInfo}>{props.infoHeader} </Text>
                     <Text style={styles.meetingInfo}>{props.infoText} </Text>
-            </Modal>
-        </View>
+          
+          </View>
+        </Modal>
 
    
 
 
 
     
-        <View  >
-            <Modal
-                key={props.CarouselKey} 
-                style={styles.meetingBox}
-                img={props.img}
-                animationType="slide"
-                transparent={true}
-                visible={meetingImage}
-                onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setMeetingImage(!meetingImage);
-                }}
-                        
-                >
-                    <Text style={styles.header}>{props.title}</Text>
-                    <View style={styles.imgShadow}/>
-                    <Image style={styles.meetingImageBox} source= {props.img}/>
-                    <AntDesign name="caretdown" size={24} color="black" onPress={() => [setMeetingModal(!meetingModal), setMeetingImage(!meetingImage)]} />
-            </Modal>
+         <View  style={styles.meetingBox}>
+           
+                   <View style={styles.meetingImgDiv}>
+                        <Text style={styles.meetingHeader}>{props.title}</Text>
+                        <View style={styles.homeImgShadow}>
+                           <Image style={styles.meetingImageBox} source= {props.img}/>
+                        </View>
+                        <Text style={styles.readText}  onPress={() => setMeetingModal(!meetingModal)}> Les </Text>
+                       
+                    </View>
         </View>
             
         
@@ -120,17 +113,46 @@ const  [meetingImage, setMeetingImage] = useState(true)
 
 // carousel element for the meeting and enhet carousel
 export  const CarouselSectionElement= (props)=>{
+
+    const [meetingModal, setMeetingModal] = useState(false);
+    const  [meetingImage, setMeetingImage] = useState(true)
+
     return (
-        <View key={props.CarouselKey} style={styles.meetingBox} >
-            <Text style={styles.header}>{props.title}</Text>
-            <View style={styles.imgShadow}>
-              <Image style={styles.meetingImageBox} source= {props.img}/>
-            </View>
-            <View style={styles.infoBox}>
+
+<View style={styles.meetingBox}>
+        <Modal
+            
+        style={styles.modal}
+        animationType="slide"
+        transparent={false}
+        visible={meetingModal}
+        onRequestClose={() => {
+        Alert.alert("Modal has been closed.");
+        setMeetingModal(!meetingModal);
+        }}
+        
+        >
+           <AntDesign name="close" size={20} color="black" onPress={() => setMeetingModal(false)} style={styles.closeIcon}/>
+           <View style={styles.modalBox}>
                 <Text style={styles.enhetInfo}>{props.info} </Text>
             </View>
+      </Modal>
+
+        <View key={props.CarouselKey} style={styles.meetingBox} >
+            <View style={styles.meetingImgDiv}>
+                <Text style={styles.meetingHeader}>{props.title}</Text>
+                <View style={styles.homeImgShadow}>
+                    <Image style={styles.meetingImageBox} source= {props.img}/>
+                </View>
+                <Text style={styles.readText}  onPress={() => setMeetingModal(!meetingModal)}> Les </Text>
+            </View>
         </View>
+   
+   </View> 
+    
     )
+
+
 }
 
 
@@ -220,9 +242,19 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         width: 400,
+        marginLeft: 10,
+        marginTop:100
+        
+    },
+
+    sectionBox:{
+        display: 'flex',
+        flexDirection: 'column',
+        width: 400,
         marginLeft: 10
         
     },
+
 
     meetingImageBox: {
         width: 170,
@@ -233,6 +265,15 @@ const styles = StyleSheet.create({
    
    
     }, 
+
+    meetingImgDiv:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems:'center',
+        marginRight: 50
+
+    },
+
     header:{
         fontSize: 20,
         marginBottom: 30,
@@ -240,6 +281,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginRight: 90
     }, 
+
+    meetingHeader:{
+        fontSize: 20,
+        marginBottom: 30,
+        color: '#7E7E7E', 
+        textAlign: 'center'
+    },
 
     homeBox:{
         width: 330,
@@ -265,7 +313,7 @@ const styles = StyleSheet.create({
         zIndex: 0,
         shadowColor: 'black',
         shadowOffset: {width: 5, height: 4},
-        shadowOpacity: 0.2,
+        shadowOpacity: 0.5,
         shadowRadius: 10, 
         marginRight: 0
         
@@ -283,5 +331,39 @@ const styles = StyleSheet.create({
     
     },
 
+    readText:{
+       marginTop:20,
+       fontSize: 16,
+       fontStyle:'italic'
+
+    },
+
+    modalBox:{
+        marginTop: 200,
+        marginLeft: 30
+
+    },
+
+    closeIcon:{
+        marginTop: 50,
+        marginLeft: 15
+    }
+
    
    })
+
+
+
+  /* <Modal
+   key={props.CarouselKey} 
+   style={styles.meetingBox}
+   img={props.img}
+   animationType="slide"
+   transparent={true}
+   visible={meetingImage}
+   onRequestClose={() => {
+   Alert.alert("Modal has been closed.");
+   setMeetingImage(!meetingImage);
+   }}
+           
+   >*/

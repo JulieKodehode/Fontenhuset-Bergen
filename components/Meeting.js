@@ -70,8 +70,7 @@ container:{
     maxWidth: 412
 },
 ScrollContainer:{
- height: 600, 
- marginTop: 200
+ height: 600
 }
 
 

@@ -1,9 +1,10 @@
-import { StyleSheet, Text,Image, View, ScrollView, InteractionManager, Modal, Pressable} from 'react-native';
+import { StyleSheet, Text,Image, View, ScrollView, InteractionManager, Modal, Pressable, TouchableOpacity, TextInput} from 'react-native';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons'; 
-
+import Svg from 'react-native-svg';
+import { SvgUri } from 'react-native-svg';
 
 export function Footer(){
 
@@ -11,14 +12,23 @@ const [modalVisible, setModalVisible] = useState(false);
 
 const [modalBox, setModalBox] = useState(false)
 
+const [profile, setProfile] = useState(false)
+
 function SwitchBox(){
    setModalVisible(false)
-   setModalBox(true)
+   setProfile(true)
+}
+
+function Bestillt(){
+    setProfile(false)
+    setModalBox(true)
+
 }
 
 function CloseBox(){
     setModalVisible(false)
     setModalBox(false)
+    setProfile(false)
  }
 
 const navigation = useNavigation()
@@ -32,7 +42,7 @@ return(
             <Modal
                     style={styles.modal}
                     animationType="slide"
-                    transparent={true}
+                    transparent={false}
                     visible={modalVisible}
                     onRequestClose={() => {
                     Alert.alert("Modal has been closed.");
@@ -42,7 +52,8 @@ return(
                 <View style={styles.bestillBox}>
                     <AntDesign name="close" size={24} color="black" onPress={CloseBox} style={styles.closeIcon}/>
                     <View >
-                        <Text style={styles.bestillText}> Dagens lunsj er kjøttkaker</Text>
+                        <Text style={styles.bestillText}> Dagens lunsj er:</Text>
+                        <Text style={styles.bestillText}> kjøttkaker</Text>
                     </View>
                     <Pressable style={styles.closeButton} onPress={SwitchBox} >
                         <Text> Bestill lunsj</Text>
@@ -51,10 +62,45 @@ return(
 
             </Modal>
 
+
+
+         
             <Modal
                     style={styles.modal}
                     animationType="slide"
-                    transparent={true}
+                    transparent={false}
+                    visible={profile}
+                    onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setProfile(!setProfile);
+                    }}
+                >
+                <View style={styles.bestillBox}>
+                    <AntDesign name="close" size={24} color="black" onPress={CloseBox} style={styles.closeIcon}/>
+                    
+
+                    <TextInput   
+                    style={styles.input}
+                    value={Text}
+                    placeholder="Ditt navn"
+                    
+                    />
+
+                     
+                    <Pressable style={styles.closeButton} onPress={Bestillt} >
+                        <Text> Bestill lunsj</Text>
+                    </Pressable>
+                </View>
+
+            </Modal>   
+
+
+
+
+            <Modal
+                    style={styles.modal}
+                    animationType="slide"
+                    transparent={false}
                     visible={modalBox}
                     onRequestClose={() => {
                     Alert.alert("Modal has been closed.");
@@ -83,12 +129,14 @@ return(
         <Text style={styles.iconText}>Meny</Text>
         </View>
         <View style={styles.iconBox} >
-            <MaterialCommunityIcons name="email-outline" size={32} style={styles.icons} onPress={() => navigation.navigate('Kontakt')}   />
+            <MaterialCommunityIcons name="email-outline" size={32} style={styles.icons} onPress={() => navigation.navigate('Kontakt')}  />
             <Text  style={styles.iconText}>Kontaktinfo</Text>
         </View>
         <View style={styles.iconBox}  >
-            <Ionicons name="person-outline" size={32}  style={styles.icons} onPress={() => navigation.navigate('Profile')} />
-            <Text style={styles.iconText}>Meg</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Fontenehus')} >
+               <Image source={require('../assets/FontenehusetLogo.png')}  style={styles.icons} resizeMode='contain'  />
+             </TouchableOpacity>
+            <Text style={styles.iconText}>Fontenehus</Text>
         </View>
     </View>)
 
@@ -119,7 +167,7 @@ const styles = StyleSheet.create({
          alignItems:'center',
          fontSize: 9,
          textAlign: 'center',
-         marginRight: 3,
+         marginRight: 5,
          marginTop: 4
 
      },
@@ -152,36 +200,47 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent:'center',
         alignItems:'center', 
-        marginTop: 100,
-        width: 200,
-        height: 200,
+        marginTop: 150,
+        width: 300,
+        height: 300,
         backgroundColor: 'white',
-        marginLeft: 80,
+        marginLeft: 40,
         borderRadius: 10
         
      },
 
      closeButton:{
-        display: 'flex',
-        height: 50,
-        width: 100,
-        backgroundColor: '#FDE1E1',
-        alignItems: 'center',
-        justifyContent:'center',
+        width: 150,
+        height: 39,
+        borderColor: "#F4B09A",
+        borderWidth: 1,
         borderRadius: 10,
-        marginTop: 20
+        marginTop: 20,
+        display: 'flex',
+        justifyContent:'center',
+        alignItems: 'center'
      }, 
 
      modal:{
         display: 'flex',
         justifyContent:'center',
-        height: 250,
-        width: 300
+        height: 400,
+        width: 400
      },
 
      closeIcon:{
-        marginLeft: 135,
-        marginBottom: 10
+        marginLeft: 250,
+        marginBottom: 150
+     },
+
+     input: {
+        width: 150,
+        height: 39,
+        borderWidth: 1,
+        borderColor: '#7B7B7B',
+        padding: 10
+        
+
      }
 
 
@@ -192,7 +251,7 @@ const styles = StyleSheet.create({
 
 /*<Image style={styles.icons} size={38} source={require('../assets/Fork&Knife.svg')}/>
 
-
+<Ionicons name="person-outline" size={32}  style={styles.icons} onPress={() => navigation.navigate('Profile')} />
 
  <Modal
                     style={styles.modal}

@@ -348,8 +348,87 @@ export const MemeData =[
                         id: 240,
                             image: require('./assets/airplane.jpg')
                             
-                            }
+                            },
+           {
+                         id: 241,
+                         image: require('./assets/hund2.jpg')
+                                
+                                },
             
+
+
+]
+
+export const CafeData = [
+   
+{
+    id: 400,
+    meny:[
+        {
+        id: 401,   
+        tittel: "Caffé latte"},
+
+        {
+         id: 402,
+         tittel:"Cappuccino" ,
+         beskrivelse:"eventuelt med et dryss av sjokolade, kanel og vaniljesukker"},
+
+        {
+        id: 403,   
+        tittel:"Filterkaffe"},
+
+        { 
+        id: 404,
+        tittel:"Økologisk Tierra For Planet",
+        beskrivelse:"kaffe preget av sødme og rik smak." },
+
+        { 
+        id: 405,  
+        tittel:"Caffé Crema Classico",
+        beskrivelse:"Svært aromatiske med fløyelsaktige og søte smaker, mild bitterhet og subtil syrlighet." },
+
+        {
+        id: 406,  
+        tittel:"Super Crema Blue",
+         beskrivelse:"Balansert, myk og kremet smak uten å være bitter. Du vil også oppleve at kaffen har en behagelig ettersmak av brent hasselnøtt og brunt sukker"}
+
+
+     
+        
+      
+    ],
+
+    img: [
+        {
+        id: 410,
+        image: require('./assets/Cafe1.jpg')
+
+        },
+
+        {
+            id: 411,
+            image: require('./assets/Cafe2.jpg')
+    
+            },
+        {
+            id: 412,
+            image: require('./assets/Cafe3.jpg')
+        
+                },
+        
+        {
+            id: 413,
+            image: require('./assets/Cafe8.jpg')
+            
+                    },
+
+        {
+            id: 414,
+            image: require('./assets/Cafe7.jpg')
+                        
+                                },
+    ]
+}
 
 
 ]
