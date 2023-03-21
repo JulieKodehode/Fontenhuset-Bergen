@@ -14,14 +14,31 @@ const [modalBox, setModalBox] = useState(false)
 
 const [profile, setProfile] = useState(false)
 
+const [inputValue, setInputValue] = useState("")
+
 function SwitchBox(){
    setModalVisible(false)
    setProfile(true)
 }
 
+const handleChange = input => {
+    setInputValue(input.target.value);
+
+    console.log(inputValue)
+
+}
+
 function Bestillt(){
+
+    if(inputValue === ""){
+       console.log("ingen navn er skrevet")
+    } else{
     setProfile(false)
-    setModalBox(true)
+    setModalBox(true)}
+
+  
+    
+    
 
 }
 
@@ -79,10 +96,22 @@ return(
                     <AntDesign name="close" size={24} color="black" onPress={CloseBox} style={styles.closeIcon}/>
                     
 
-                    <TextInput   
+                    <TextInput  
+                    type = "submit" 
                     style={styles.input}
-                    value={Text}
                     placeholder="Ditt navn"
+                    onChange={handleChange}
+                    value ={inputValue}
+                    
+                    
+                    />
+
+                   <TextInput   
+                    style={styles.input}
+                    placeholder="Ditt tl.nr"
+                    type = "number" 
+                    onChange={handleChange}
+                    value ={inputValue}
                     
                     />
 
@@ -109,7 +138,7 @@ return(
                 >
                 <View style={styles.bestillBox}>
                     <View >
-                        <Text style={styles.bestillText}> Lunsj er bestillt</Text>
+                        <Text style={styles.bestillText}>Takk{inputValue}Lunsj er bestillt</Text>
                     </View>
                     <Pressable style={styles.closeButton} onPress={() => setModalBox(!modalBox)} >
                         <Text> Lukk</Text>
@@ -183,7 +212,7 @@ const styles = StyleSheet.create({
      }, 
      iconText:{
          color: '#7B7B7B',
-         marginBottom: 3, 
+         marginBottom: 10, 
          width: 55,
          fontSize: 9,
          textAlign:'center'
@@ -238,7 +267,8 @@ const styles = StyleSheet.create({
         height: 39,
         borderWidth: 1,
         borderColor: '#7B7B7B',
-        padding: 10
+        padding: 10, 
+        marginTop: 15
         
 
      }
@@ -272,7 +302,4 @@ const styles = StyleSheet.create({
                     </Pressable>
                 </View>
 
-            </Modal>
-
-
-*/
+            </Modal> */ 

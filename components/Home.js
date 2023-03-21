@@ -219,18 +219,20 @@ const styles = StyleSheet.create({
         height: 210
     },
     dagenIdag:{
-        width: 100,
-        height: 20,
+        width: '32%',
+        height: '10%',
         borderColor: 'black',
-        borderRadius: 20,
+        borderRadius: 18,
         borderStyle: 'solid',
-        fontSize: 12,
+        fontSize: 10,
         textAlign:'center',
         borderWidth: 1, 
         borderColor: '#F4B09A',
         paddingTop: 10,
-        paddingBottom:25, 
-        marginLeft: 10
+        paddingBottom:22, 
+        paddingLeft: 2,
+        paddingRight: 2,
+        marginLeft: '5%'
         
 
     },
@@ -347,7 +349,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       flexDirection: 'row',
       width: 300,
-      marginLeft: 20, 
+      marginLeft: '6%', 
       marginTop: 70
       
 

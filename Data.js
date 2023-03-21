@@ -354,7 +354,63 @@ export const MemeData =[
                          image: require('./assets/hund2.jpg')
                                 
                                 },
+            {
+                        id: 242,
+                        image: require('./assets/weHaveNoses.jpg')
+                                           
+                                           },
+            {
+                         id: 243,
+                         image: require('./assets/termsAndCondition.png')
+                                                               
+                                                               },
+            {
+                        id: 244,
+                        image: require('./assets/snowman.jpg'),
+
             
+                                                                                   
+                                                                    },
+            {
+                        id: 245,
+                        image: require('./assets/snowman2.jpg')
+                                                                                                       
+                                                                    },
+            {
+                        id: 246,
+                        image: require('./assets/sheriffsHat.jpg')
+                                                                                           
+                                                                    },
+
+            {
+                        id: 247,
+                        image: require('./assets/seeEachOther.jpg')
+                                                                                           
+                                                                    },
+
+          {
+                        id: 248,
+                        image: require('./assets/lookUpstream.jpg')
+                                                                                           
+                                                                    },
+
+        {
+                        id: 249,
+                        image: require('./assets/JenniferA.jpg')
+                                                                                           
+                                                                    },
+
+        {
+                        id: 250,
+                        image: require('./assets/freedom.jpg')
+                                                                                           
+                                                                    },
+
+        {
+                        id: 251,
+                        image: require('./assets/gumpAndBean.jpg')
+                                                                                           
+                                                                                           },
 
 
 ]
