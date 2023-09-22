@@ -168,8 +168,6 @@ const styles = StyleSheet.create({
 		height: 210,
 	},
 	dagenIdag: {
-		width: "32%",
-		height: "10%",
 		borderColor: "black",
 		borderRadius: 18,
 		borderStyle: "solid",
